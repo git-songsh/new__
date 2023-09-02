@@ -12,10 +12,10 @@ from langchain.chat_models import ChatOpenAI
 from langchain.chains import RetrievalQA
 
 # SQLite 데이터베이스 연결 설정
-conn = sqlite3.connect('pdf_vector_data.db')
+conn = sqlite3.connect('./test.db')
 cursor = conn.cursor()
 
-# 데이터베이스 스키마 생성 (테이블 생성)
+# 데이터베이스 생성 (테이블 생성)
 cursor.execute('''CREATE TABLE IF NOT EXISTS pdf_vectors (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
                     page_number INTEGER,
