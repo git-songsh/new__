@@ -12,7 +12,7 @@ selected_option = st.sidebar.selectbox('선택할 기기를 바라보세요', ['
 
 # 사용자가 선택한 옵션에 따라 다른 콘텐츠 표시
 if selected_option == 'TV':
-    st.header('TV')
+    st.header('TV :sunglasses:',divider='rainbow')
     # 페이지 1의 내용을 표시
 
 elif selected_option == '가습기':
