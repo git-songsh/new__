@@ -88,8 +88,6 @@ elif selected_option == 'TV를 바라본다':
   st.header('TV :sunglasses:',divider='rainbow')
 
   tv_question = st.text_input('TV에게 질문을 입력하세요')
-
-  tv_question = st.text_input('TV에게 질문을 입력하세요')
   if st.button('TV에게 질문하기', key='tv_button'):
       with st.spinner('Wait for it...'):
           llm = ChatOpenAI(model_name="gpt-3.5-turbo", temperature=0)
