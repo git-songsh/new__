@@ -3,7 +3,7 @@ import tempfile
 import os
 from PIL import Image
 
-st.balloons()
+#st.balloons()
 
 #제목
 st.title("SightnSpeak")
@@ -33,10 +33,11 @@ if selected_option == 'TV':
 
 
 elif selected_option == '가습기':
+
     st.success('당신은 가습기를 바라보고 선택하였습니다!')
-    st.title('가습기')
+    st.header('가습기 :sunglasses:',divider='rainbow')
 
 elif selected_option == '에어컨':
     st.success('당신은 에어컨을 바라보고 선택하였습니다!')
-    st.title('에어컨')
+    st.header('에어컨 :sunglasses:',divider='rainbow')
    
