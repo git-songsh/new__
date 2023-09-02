@@ -45,7 +45,7 @@ elif selected_option == 'TV를 바라본다':
   tv_img = tv_img.resize((100, 100))
   st.image(tv_img)
   
-  st.success('당신은 TV를 선택하였습니다!')
+  st.success('당신은 *TV*를 선택하였습니다!')
   st.header('📺TV :sunglasses:',divider='rainbow')
 
   tv_question = st.text_input('TV에게 질문을 입력하세요')
@@ -80,11 +80,18 @@ elif selected_option == '가습기를 바라본다':
       st.text(f"😊 {wrap_text(chat['answer'])}")
       st.write("---")
 
-elif selected_option == '에어컨을 바라본다':
-    
-  st.success('당신은 에어컨을 선택하였습니다!')
-  st.header('❄️에어컨 :sunglasses:',divider='rainbow')
 
+elif selected_option == '에어컨을 바라본다':
+    ac_img = Image.open('person_AC.jpg')
+    ac_img = ac_img.resize((100, 100))
+    st.image(ac_img)
+    
+    st.success('당신은 에어컨을 선택하였습니다!')
+    st.header('❄️에어컨',divider='rainbow')
+
+    ac_question = st.text_input('에어컨에게 질문을 입력하세요!')
+    st.caption('ENTER로 입력')
+    
   ac_question = st.text_input('에어컨에게 질문을 입력하세요', key='ac')
   if st.button('에어컨에게 질문하기'):
       with st.spinner('Wait for it...'):
