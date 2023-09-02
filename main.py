@@ -18,17 +18,14 @@ selected_option = st.selectbox('선택할 기기를 바라보세요', ['TV', '�
 
 # 사용자가 선택한 옵션에 따라 다른 콘텐츠 표시
 if selected_option == 'TV':
+    st.success('당신은 TV를 바라보고 선택하였습니다!')
     st.header('TV :sunglasses:',divider='rainbow')
 
-    st.success('당신은 TV를 바라보고 선택하였습니다!')
-    # 페이지 1의 내용을 표시
-
 elif selected_option == '가습기':
-    st.title('가습기')
     st.success('당신은 가습기를 바라보고 선택하였습니다!')
-    # 페이지 2의 내용을 표시
+    st.title('가습기')
 
 elif selected_option == '에어컨':
-    st.title('에어컨')
     st.success('당신은 에어컨을 바라보고 선택하였습니다!')
-    # 페이지 3의 내용을 표시
+    st.title('에어컨')
+   
