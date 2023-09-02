@@ -18,25 +18,26 @@ import time
 
 openai_api_key = st.sidebar.text_input("OpenAI API Key", type="password")
 
-
+'''
 
 #파일 업로드
 # ["samsung_tv_manual.pdf", "lg_ac_manual.pdf", "winix_humidifier_manual.pdf"]
 tv_file = PyPDFLoader("samsung_tv_manual.pdf")
 ac_file = PyPDFLoader("lg_ac_manual.pdf")
 hm_file = PyPDFLoader("winix_humidifier_manual.pdf")
+'''
 
 #제목
 st.title("SightnSpeak")
 st.write("---")
-
+'''
 # 방 이미지
 cyworld_img = Image.open('livingroom.jpg')
 # 이미지 크기 조정
 cyworld_img = cyworld_img.resize((650, int(650 * (cyworld_img.height / cyworld_img.width))))
 st.image(cyworld_img, width=650)
 st.write("---")
-
+'''
 @st.cache
 def document_to_db(uploaded_file, size):    # 문서 크기에 맞게 사이즈 지정하면 좋을 것 같아서 para 넣었어용
     pages = uploaded_file.load_and_split()
