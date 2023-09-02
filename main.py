@@ -20,11 +20,13 @@ st.image(room_img, width=650)
 st.subheader("선택할 기기를 바라보세요!")
 
 # 메뉴 선택
-selected_option = st.selectbox(' ', ['TV', '가습기', '에어컨'])
+selected_option = st.selectbox(' ', ['선택', 'TV', '가습기', '에어컨'])
 
 
 # 사용자가 선택한 옵션에 따라 다른 콘텐츠 표시
-if selected_option == 'TV':
+if selected_option == '선택':
+    
+elif selected_option == 'TV':
     tv_img = Image.open('person_TV.jpg')
     tv_img = tv_img.resize((100, 100))
     st.image(tv_img)
@@ -35,8 +37,6 @@ if selected_option == 'TV':
     tv_question = st.text_input('TV에게 질문을 입력하세요')
     
     st.button('TV에게 질문하기', key='tv_button')
-
-
 
 elif selected_option == '가습기':
     hm_img = Image.open('person_HM.jpg')
