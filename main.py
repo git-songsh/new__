@@ -9,15 +9,31 @@ from langchain.embeddings import OpenAIEmbeddings
 from langchain.chat_models import ChatOpenAI
 from langchain.chains import RetrievalQA
 
-def pdf_to_document(uploaded_file):
-    temp_dir = tempfile.TemporaryDirectory()
-    temp_filepath = os.path.join(temp_dir.name, uploaded_file.name)
-    with open(temp_filepath, "wb") as f:
-        f.write(uploaded_file.getvalue())
-    loader = PyPDFLoader(temp_filepath)
-    pages = loader.load_and_split()
-    return pages
+#파일 업로드
+# ["samsung_tv_manual.pdf", "lg_ac_manual.pdf", "winix_humidifier_manual.pdf"]
+tv_file = PyPDFLoader("samsung_tv_manual.pdf")
+ac_file = PyPDFLoader("lg_ac_manual.pdf")
+hm_file = PyPDFLoader("winix_humidifier_manual.pdf")
 
+def document_to_db(uploaded_file, size):    # 문서 크기에 맞게 사이즈 지정하면 좋을 것 같아서 para 넣었어용
+    pages = uploaded_file.load_and_split()
+    #Split
+    text_splitter = RecursiveCharacterTextSplitter(
+        # Set a really small chunk size, just to show.
+        chunk_size = size,
+        chunk_overlap  = 20,
+        length_function = len,
+        is_separator_regex = False,
+    )
+    texts = text_splitter.split_documents(pages)
+
+    #Embedding
+    embeddings_model = OpenAIEmbeddings()
+
+    # load it into Chroma
+    db = Chroma.from_documents(texts, embeddings_model)
+    return db
+'''
 #업로드 되면 동작하는 코드
 if uploaded_file is not None:
     pages = pdf_to_document(uploaded_file)
@@ -44,7 +60,7 @@ if uploaded_file is not None:
     db = None
     db = Chroma(persist_directory=persist_directory,
                   embedding_function=embeddings_model)
-
+'''
 #st.balloons()
 
 #제목
@@ -65,7 +81,7 @@ selected_option = st.selectbox('선택할 기기를 바라보세요', ['TV', '�
 
 # 사용자가 선택한 옵션에 따라 다른 콘텐츠 표시
 if selected_option == 'TV':
-  db_tv = document_to_db(tv_file)
+  db_tv = document_to_db(tv_file, 500)
 
   tv_img = Image.open('person_TV.jpg')
   tv_img = tv_img.resize((100, 100))
@@ -111,7 +127,7 @@ elif selected_option == '가습기':
       st.write("---")
 
 elif selected_option == '에어컨':
-  db_ac = document_to_db(ac_file)
+  db_ac = document_to_db(ac_file, 500)
 
   st.success('당신은 에어컨을 바라보고 선택하였습니다!')
   st.header('에어컨 :sunglasses:',divider='rainbow')
