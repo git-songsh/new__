@@ -15,7 +15,7 @@ tv_file = PyPDFLoader("samsung_tv_manual.pdf")
 ac_file = PyPDFLoader("lg_ac_manual.pdf")
 hm_file = PyPDFLoader("winix_humidifier_manual.pdf")
 
-def document_to_db(uploaded_file, size):    # 문서 크기에 맞게 사이즈 지정하면 좋을 것 같아서 para 넣었어용
+def document_to_db(uploaded_file, size):    # 문서 크기에 맞게 사이즈 지정 --> size
     pages = uploaded_file.load_and_split()
     #Split
     text_splitter = RecursiveCharacterTextSplitter(
