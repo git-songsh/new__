@@ -1,5 +1,8 @@
 import streamlit as st
 
+with st.sidebar:
+    openai_api_key = st.text_input("OpenAI API Key", type="password")
+
 # 메뉴 선택을 위한 사이드바
 selected_option = st.sidebar.selectbox('메뉴 선택', ['페이지 1', '페이지 2', '페이지 3'])
 
