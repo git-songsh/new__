@@ -28,8 +28,8 @@ if selected_option == 'TV':
 
     tv_question = st.text_input('TV에게 질문을 입력하세요')
     
-    if st.button('TV에게 질문하기', key='tv_button'):
-        with st.spinner('Wait for it...')
+    st.button('TV에게 질문하기', key='tv_button')
+
 
 
 elif selected_option == '가습기':
