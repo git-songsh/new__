@@ -54,6 +54,13 @@ def document_to_db(uploaded_file, size):    # 문서 크기에 맞게 사이즈 
 #제목
 st.title("SightnSpeak")
 st.write("---")
+st.write('이곳은 당신의 집 입니다.')
+
+# 방 이미지
+room_img = Image.open('livingroom.jpg')
+# 이미지 크기 조정
+room_img = room_img.resize((650, int(650 * (room_img.height / room_img.width))))
+st.image(room_img, width=650)
 
 with st.sidebar:
     openai_api_key = st.text_input("OpenAI API Key", type="password")
