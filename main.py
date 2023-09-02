@@ -1,3 +1,5 @@
+import sqlite3
+
 import streamlit as st
 import tempfile
 import os
@@ -8,6 +10,19 @@ from langchain.vectorstores import Chroma
 from langchain.embeddings import OpenAIEmbeddings
 from langchain.chat_models import ChatOpenAI
 from langchain.chains import RetrievalQA
+
+# SQLite 데이터베이스 연결 설정
+conn = sqlite3.connect('pdf_vector_data.db')
+cursor = conn.cursor()
+
+# 데이터베이스 스키마 생성 (테이블 생성)
+cursor.execute('''CREATE TABLE IF NOT EXISTS pdf_vectors (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    page_number INTEGER,
+                    vector BLOB
+                 )''')
+conn.commit()
+
 
 #파일 업로드
 # ["samsung_tv_manual.pdf", "lg_ac_manual.pdf", "winix_humidifier_manual.pdf"]
