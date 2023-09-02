@@ -9,10 +9,8 @@ st.write("---")
 with st.sidebar:
     openai_api_key = st.text_input("OpenAI API Key", type="password")
 
-    st.write("---")
     
-    # 메뉴 선택을 위한 사이드바
-
+# 메뉴 선택
 selected_option = st.selectbox('선택할 기기를 바라보세요', ['TV', '가습기', '에어컨'])
 
 
