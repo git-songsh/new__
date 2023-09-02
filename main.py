@@ -45,7 +45,7 @@ def document_to_db(uploaded_file, size, device_name):    # 문서 크기에 맞�
     #Embedding
     embeddings_model = OpenAIEmbeddings()
 
-    persist_directory = f'db_{device_name}'
+    persist_directory = f'./db_{device_name}'
     # load it into Chroma
     db = Chroma.from_documents(documents=texts,
                                  embedding=embeddings_model,
