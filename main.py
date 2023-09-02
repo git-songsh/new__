@@ -5,12 +5,19 @@ from PIL import Image
 
 #st.balloons()
 
+with st.sidebar:
+    openai_api_key = st.text_input("OpenAI API Key", type="password")
+
 #제목
 st.title("SightnSpeak")
 st.write("---")
 
-with st.sidebar:
-    openai_api_key = st.text_input("OpenAI API Key", type="password")
+# 방 이미지
+room_img = Image.open('livingroom.jpg')
+# 이미지 크기 조정
+room_img = cyworld_img.resize((650, int(650 * (cyworld_img.height / cyworld_img.width))))
+st.image(cyworld_img, width=650)
+st.write("---")
 
     
 # 메뉴 선택
