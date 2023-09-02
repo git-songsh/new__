@@ -15,8 +15,8 @@ st.write("---")
 # 방 이미지
 room_img = Image.open('livingroom.jpg')
 # 이미지 크기 조정
-room_img = cyworld_img.resize((650, int(650 * (cyworld_img.height / cyworld_img.width))))
-st.image(cyworld_img, width=650)
+room_img = room_img.resize((650, int(650 * (room_img.height / room_img.width))))
+st.image(room_img, width=650)
 st.write("---")
 
     
