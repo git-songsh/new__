@@ -14,6 +14,12 @@ import os
 from PIL import Image
 import time
 
+
+
+openai_api_key = st.sidebar.text_input("OpenAI API Key", type="password")
+
+
+
 #파일 업로드
 # ["samsung_tv_manual.pdf", "lg_ac_manual.pdf", "winix_humidifier_manual.pdf"]
 tv_file = PyPDFLoader("samsung_tv_manual.pdf")
