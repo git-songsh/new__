@@ -1,5 +1,4 @@
 import sqlite3
-
 import streamlit as st
 import tempfile
 import os
@@ -11,50 +10,6 @@ from langchain.embeddings import OpenAIEmbeddings
 from langchain.chat_models import ChatOpenAI
 from langchain.chains import RetrievalQA
 
-# SQLite 데이터베이스 연결 설정
-conn = sqlite3.connect('./test.db')
-cursor = conn.cursor()
-
-# 데이터베이스 생성 (테이블 생성)
-cursor.execute('''CREATE TABLE IF NOT EXISTS pdf_vectors (
-                    id INTEGER PRIMARY KEY AUTOINCREMENT,
-                    page_number INTEGER,
-                    vector BLOB
-                 )''')
-conn.commit()
-
-#파일 업로드
-# ["samsung_tv_manual.pdf", "lg_ac_manual.pdf", "winix_humidifier_manual.pdf"]
-tv_file = PyPDFLoader("samsung_tv_manual.pdf")
-ac_file = PyPDFLoader("lg_ac_manual.pdf")
-hm_file = PyPDFLoader("winix_humidifier_manual.pdf")
-
-
-def document_to_db(uploaded_file, size, device_name):    # 문서 크기에 맞게 사이즈 지정 --> size
-    pages = uploaded_file.load_and_split()
-    #Split
-    text_splitter = RecursiveCharacterTextSplitter(
-        # Set a really small chunk size, just to show.
-        chunk_size = size,
-        chunk_overlap  = 20,
-        length_function = len,
-        is_separator_regex = False,
-    )
-    texts = text_splitter.split_documents(pages)
-
-    #Embedding
-    embeddings_model = OpenAIEmbeddings()
-
-    persist_directory = f'./db_{device_name}'
-    # load it into Chroma
-    db = Chroma.from_documents(documents=texts,
-                                 embedding=embeddings_model,
-                                 persist_directory=persist_directory)
-    db.persist()
-    db = None
-    db = Chroma(persist_directory=persist_directory,
-                  embedding_function=embeddings_model)
-    return db
 
 #st.balloons()
 
@@ -91,7 +46,7 @@ elif selected_option == 'TV를 바라본다':
   tv_img = tv_img.resize((100, 100))
   st.image(tv_img)
   
-  st.success('당신은 TV를 바라보고 선택하였습니다!')
+  st.success('당신은 TV를 선택하였습니다!')
   st.header('📺TV :sunglasses:',divider='rainbow')
 
   tv_question = st.text_input('TV에게 질문을 입력하세요')
@@ -110,7 +65,7 @@ elif selected_option == 'TV를 바라본다':
 elif selected_option == '가습기를 바라본다':
   db_hm = document_to_db(hm_file, 300, "HM")
 
-  st.success('당신은 가습기를 바라보고 선택하였습니다!')
+  st.success('당신은 가습기를 선택하였습니다!')
   st.header('💧가습기 :sunglasses:',divider='rainbow')
 
   hm_question = st.text_input('가습기에게 질문을 입력하세요', key='hm')
@@ -130,7 +85,7 @@ elif selected_option == '가습기를 바라본다':
 elif selected_option == '에어컨을 바라본다':
   db_ac = document_to_db(ac_file, 500, "AC")
 
-  st.success('당신은 에어컨을 바라보고 선택하였습니다!')
+  st.success('당신은 에어컨을 선택하였습니다!')
   st.header('❄️에어컨 :sunglasses:',divider='rainbow')
 
   ac_question = st.text_input('에어컨에게 질문을 입력하세요', key='ac')
