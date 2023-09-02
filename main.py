@@ -48,34 +48,7 @@ def document_to_db(uploaded_file, size):    # 문서 크기에 맞게 사이즈 
     # load it into Chroma
     db = Chroma.from_documents(texts, embeddings_model)
     return db
-'''
-#업로드 되면 동작하는 코드
-if uploaded_file is not None:
-    pages = pdf_to_document(uploaded_file)
 
-    #Split
-    text_splitter = RecursiveCharacterTextSplitter(
-        # Set a really small chunk size, just to show.
-        chunk_size = 300,
-        chunk_overlap  = 20,
-        length_function = len,
-        is_separator_regex = False,
-    )
-    texts = text_splitter.split_documents(pages)
-
-    #Embedding
-    embeddings_model = OpenAIEmbeddings()
-
-    persist_directory = 'db'
-    # load it into Chroma
-    db = Chroma.from_documents(documents=texts,
-                                 embedding=embeddings_model,
-                                 persist_directory=persist_directory)
-    db.persist()
-    db = None
-    db = Chroma(persist_directory=persist_directory,
-                  embedding_function=embeddings_model)
-'''
 #st.balloons()
 
 #제목
