@@ -146,6 +146,7 @@ elif selected_option == '에어컨을 바라본다':
       st.text(f"🤔 {wrap_text(chat['question'])}")
       st.text(f"😊 {wrap_text(chat['answer'])}")
       st.write("---")
-
+    
+  conn.close()
 
    
