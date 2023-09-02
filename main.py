@@ -92,20 +92,4 @@ elif selected_option == '에어컨을 바라본다':
     ac_question = st.text_input('에어컨에게 질문을 입력하세요!')
     st.caption('ENTER로 입력')
     
-  ac_question = st.text_input('에어컨에게 질문을 입력하세요', key='ac')
-  if st.button('에어컨에게 질문하기'):
-      with st.spinner('Wait for it...'):
-          llm = ChatOpenAI(model_name="gpt-3.5-turbo", temperature=0)
-          qa_chain = RetrievalQA.from_chain_type(llm, retriever=db_ac.as_retriever())
-          result = qa_chain({"query": ac_question})
-          st.session_state.chat_history['AC'].append({"question": ac_question, "answer": result["result"]})
 
-  # 챗 기록 출력
-  for chat in st.session_state.chat_history['AC']:
-      st.text(f"🤔 {wrap_text(chat['question'])}")
-      st.text(f"😊 {wrap_text(chat['answer'])}")
-      st.write("---")
-    
-  conn.close()
-
-   
