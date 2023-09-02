@@ -38,8 +38,6 @@ elif selected_option == 'TV를 바라본다':
 
     tv_question = st.text_input('TV에게 질문을 입력하세요!')
     st.caption('ENTER로 입력')
-    
-    st.button('TV에게 질문하기', key='tv_button')
 
 elif selected_option == '가습기를 바라본다':
     hm_img = Image.open('person_HM.jpg')
@@ -50,9 +48,8 @@ elif selected_option == '가습기를 바라본다':
     st.header('가습기 :sunglasses:',divider='rainbow')
 
     hm_question = st.text_input('가습기에게 질문을 입력하세요!')
+    st.caption('ENTER로 입력')
     
-    st.button('가습기에게 질문하기', key='hm_button')
-
 elif selected_option == '에어컨을 바라본다':
     ac_img = Image.open('person_AC.jpg')
     ac_img = ac_img.resize((100, 100))
@@ -62,6 +59,4 @@ elif selected_option == '에어컨을 바라본다':
     st.header('에어컨 :sunglasses:',divider='rainbow')
 
     ac_question = st.text_input('에어컨에게 질문을 입력하세요!')
-    
-    st.button('에어컨에게 질문하기', key='ac_button')
-   
+    st.caption('ENTER로 입력')
