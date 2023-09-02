@@ -20,11 +20,11 @@ st.image(room_img, width=650)
 st.subheader("선택할 기기를 바라보세요!")
 
 # 메뉴 선택
-selected_option = st.selectbox(' ', ['선택', 'TV', '가습기', '에어컨'])
+selected_option = st.selectbox(' ', ['기기 선택', 'TV', '가습기', '에어컨'])
 
 
 # 사용자가 선택한 옵션에 따라 다른 콘텐츠 표시
-if selected_option == '선택':
+if selected_option == '기기 선택':
     st.write(" ")
     
 elif selected_option == 'TV':
