@@ -25,6 +25,7 @@ selected_option = st.selectbox(' ', ['선택', 'TV', '가습기', '에어컨'])
 
 # 사용자가 선택한 옵션에 따라 다른 콘텐츠 표시
 if selected_option == '선택':
+    st.write(" ")
     
 elif selected_option == 'TV':
     tv_img = Image.open('person_TV.jpg')
