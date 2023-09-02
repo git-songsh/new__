@@ -1,4 +1,18 @@
 import streamlit as st
+from streamlit.components.v1 import html
+
+# 사용자 정의 CSS 스타일을 포함한 HTML을 사용하여 사이드바 크기 조절
+st.markdown(
+    """
+    <style>
+    .sidebar .sidebar-content {
+        max-width: 200px; /* 원하는 크기로 조절 */
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
 
 #제목
 st.title("SightnSpeak")
