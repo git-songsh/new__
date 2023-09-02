@@ -1,5 +1,9 @@
 import streamlit as st
 
+#제목
+st.title("SightnSpeak")
+st.write("---")
+
 with st.sidebar:
     openai_api_key = st.text_input("OpenAI API Key", type="password")
 
