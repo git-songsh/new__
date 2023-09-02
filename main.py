@@ -18,6 +18,8 @@ room_img = Image.open('livingroom.jpg')
 room_img = room_img.resize((650, int(650 * (room_img.height / room_img.width))))
 st.image(room_img, width=650)
 
+st.write('이곳은 당신의 집 입니다.')
+
 # 메뉴 선택
 selected_option = st.selectbox('선택할 기기를 바라보세요!', ['기기 선택', 'TV', '가습기', '에어컨'])
 
