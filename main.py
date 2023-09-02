@@ -26,12 +26,7 @@ if selected_option == 'TV':
     tv_question = st.text_input('TV에게 질문을 입력하세요')
     if st.button('TV에게 질문하기', key='tv_button'):
         with st.spinner('Wait for it...'):
-        #    llm = ChatOpenAI(model_name="gpt-3.5-turbo", temperature=0)
-        #    qa_chain = RetrievalQA.from_chain_type(llm, retriever=db_tv.as_retriever())
-        #    result = qa_chain({"query": tv_question})
-        #    st.session_state.chat_history['TV'].append({"question": tv_question, "answer": result["result"]})
 
-    # 챗 기록 출력
     for chat in st.session_state.chat_history['TV']:
         st.text(f"Q: {chat['question']}")
         st.text(f"A: {chat['answer']}")
