@@ -30,7 +30,7 @@ ac_file = PyPDFLoader("lg_ac_manual.pdf")
 hm_file = PyPDFLoader("winix_humidifier_manual.pdf")
 
 
-def document_to_db(uploaded_file, size):    # 문서 크기에 맞게 사이즈 지정 --> size
+def document_to_db(uploaded_file, size, device_name):    # 문서 크기에 맞게 사이즈 지정 --> size
     pages = uploaded_file.load_and_split()
     #Split
     text_splitter = RecursiveCharacterTextSplitter(
@@ -45,7 +45,7 @@ def document_to_db(uploaded_file, size):    # 문서 크기에 맞게 사이즈 
     #Embedding
     embeddings_model = OpenAIEmbeddings()
 
-    persist_directory = 'db'
+    persist_directory = f'db_{device_name}'
     # load it into Chroma
     db = Chroma.from_documents(documents=texts,
                                  embedding=embeddings_model,
@@ -85,7 +85,7 @@ if selected_option == '기기 선택':
     st.write(" ")
 
 elif selected_option == 'TV를 바라본다':
-  db_tv = document_to_db(tv_file, 500)
+  db_tv = document_to_db(tv_file, 500, "TV")
 
   tv_img = Image.open('person_TV.jpg')
   tv_img = tv_img.resize((100, 100))
@@ -102,14 +102,13 @@ elif selected_option == 'TV를 바라본다':
           result = qa_chain({"query": tv_question})
           st.session_state.chat_history['TV'].append({"question": tv_question, "answer": result["result"]})
 
-  # 챗 기록 출력
-  for chat in st.session_state.chat_history['TV']:
-      st.text(f"🤔 {wrap_text(chat['question'])}")
-      st.text(f"😊 {wrap_text(chat['answer'])}")
+  for chat in st.session_state.chat_history.get('TV', []):
+      st.text(f"📺 TV - 🤔 {wrap_text(chat['question'])}")
+      st.text(f"📺 TV - 😊 {wrap_text(chat['answer'])}")
       st.write("---")
 
 elif selected_option == '가습기를 바라본다':
-  db_hm = document_to_db(hm_file, 300)
+  db_hm = document_to_db(hm_file, 300, "HM")
 
   st.success('당신은 가습기를 바라보고 선택하였습니다!')
   st.header('가습기 :sunglasses:',divider='rainbow')
@@ -129,7 +128,7 @@ elif selected_option == '가습기를 바라본다':
       st.write("---")
 
 elif selected_option == '에어컨을 바라본다':
-  db_ac = document_to_db(ac_file, 500)
+  db_ac = document_to_db(ac_file, 500, "AC")
 
   st.success('당신은 에어컨을 바라보고 선택하였습니다!')
   st.header('에어컨 :sunglasses:',divider='rainbow')
