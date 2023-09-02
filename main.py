@@ -37,6 +37,7 @@ elif selected_option == 'TV를 바라본다':
     st.header('TV :sunglasses:',divider='rainbow')
 
     tv_question = st.text_input('TV에게 질문을 입력하세요!')
+    st.caption('ENTER로 입력')
     
     st.button('TV에게 질문하기', key='tv_button')
 
