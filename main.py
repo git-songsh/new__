@@ -39,11 +39,18 @@ if selected_option == 'TV':
 
 
 elif selected_option == '가습기':
-
+    hm_img = Image.open('person_HM.jpg')
+    hm_img = hm_img.resize((100, 100))
+    st.image(hm_img)
+    
     st.success('당신은 가습기를 바라보고 선택하였습니다!')
     st.header('가습기 :sunglasses:',divider='rainbow')
 
 elif selected_option == '에어컨':
+    ac_img = Image.open('person_AC.jpg')
+    ac_img = ac_img.resize((100, 100))
+    st.image(ac_img)
+    
     st.success('당신은 에어컨을 바라보고 선택하였습니다!')
     st.header('에어컨 :sunglasses:',divider='rainbow')
    
