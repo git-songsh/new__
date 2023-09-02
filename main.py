@@ -27,14 +27,10 @@ if selected_option == 'TV':
     st.header('TV :sunglasses:',divider='rainbow')
 
     tv_question = st.text_input('TV에게 질문을 입력하세요')
+    
     if st.button('TV에게 질문하기', key='tv_button'):
         with st.spinner('Wait for it...'):
-'''
-    for chat in st.session_state.chat_history['TV']:
-        st.text(f"Q: {chat['question']}")
-        st.text(f"A: {chat['answer']}")
-        st.write("---")
-'''
+
 
 elif selected_option == '가습기':
     st.success('당신은 가습기를 바라보고 선택하였습니다!')
