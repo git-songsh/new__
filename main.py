@@ -1,4 +1,7 @@
 import streamlit as st
+import tempfile
+import os
+from PIL import Image
 
 st.balloons()
 
@@ -16,7 +19,7 @@ selected_option = st.selectbox('선택할 기기를 바라보세요', ['TV', '�
 
 # 사용자가 선택한 옵션에 따라 다른 콘텐츠 표시
 if selected_option == 'TV':
-    tv_img = Image.open('television.png')
+    tv_img = Image.open('person_TV.jpg')
     tv_img = tv_img.resize((100, 100))
     st.image(tv_img)
     
