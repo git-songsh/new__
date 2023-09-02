@@ -40,7 +40,6 @@ if selected_option == '기기 선택':
     st.write(" ")
 
 elif selected_option == 'TV를 바라본다':
-  db_tv = document_to_db(tv_file, 500, "TV")
 
   tv_img = Image.open('person_TV.jpg')
   tv_img = tv_img.resize((100, 100))
@@ -63,7 +62,6 @@ elif selected_option == 'TV를 바라본다':
       st.write("---")
 
 elif selected_option == '가습기를 바라본다':
-  db_hm = document_to_db(hm_file, 300, "HM")
 
   st.success('당신은 가습기를 선택하였습니다!')
   st.header('💧가습기 :sunglasses:',divider='rainbow')
@@ -83,8 +81,7 @@ elif selected_option == '가습기를 바라본다':
       st.write("---")
 
 elif selected_option == '에어컨을 바라본다':
-  db_ac = document_to_db(ac_file, 500, "AC")
-
+    
   st.success('당신은 에어컨을 선택하였습니다!')
   st.header('❄️에어컨 :sunglasses:',divider='rainbow')
 
