@@ -8,7 +8,7 @@ with st.sidebar:
     openai_api_key = st.text_input("OpenAI API Key", type="password")
 
 # 메뉴 선택을 위한 사이드바
-selected_option = st.sidebar.selectbox('메뉴 선택', ['페이지 1', '페이지 2', '페이지 3'])
+selected_option = st.sidebar.selectbox('선택할 기기를 바라보세요', ['TV', '가습기', '페이지 3'])
 
 # 사용자가 선택한 옵션에 따라 다른 콘텐츠 표시
 if selected_option == '페이지 1':
