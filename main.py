@@ -23,12 +23,12 @@ cursor.execute('''CREATE TABLE IF NOT EXISTS pdf_vectors (
                  )''')
 conn.commit()
 
-
 #파일 업로드
 # ["samsung_tv_manual.pdf", "lg_ac_manual.pdf", "winix_humidifier_manual.pdf"]
 tv_file = PyPDFLoader("samsung_tv_manual.pdf")
 ac_file = PyPDFLoader("lg_ac_manual.pdf")
 hm_file = PyPDFLoader("winix_humidifier_manual.pdf")
+
 
 def document_to_db(uploaded_file, size):    # 문서 크기에 맞게 사이즈 지정 --> size
     pages = uploaded_file.load_and_split()
@@ -45,8 +45,15 @@ def document_to_db(uploaded_file, size):    # 문서 크기에 맞게 사이즈 
     #Embedding
     embeddings_model = OpenAIEmbeddings()
 
+    persist_directory = 'db'
     # load it into Chroma
-    db = Chroma.from_documents(texts, embeddings_model)
+    db = Chroma.from_documents(documents=texts,
+                                 embedding=embeddings_model,
+                                 persist_directory=persist_directory)
+    db.persist()
+    db = None
+    db = Chroma(persist_directory=persist_directory,
+                  embedding_function=embeddings_model)
     return db
 
 #st.balloons()
