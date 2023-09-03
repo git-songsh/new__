@@ -14,12 +14,12 @@ from langchain.chains import RetrievalQA
 #st.balloons()
 
 #제목
-st.title("SightnSpeak")
+st.title("LooknTalk")
 st.write("---")
 st.write('이곳은 당신의 집 입니다.')
 
 # 방 이미지
-room_img = Image.open('livingroom.jpg')
+room_img = Image.open('livingroom2.jpg')
 # 이미지 크기 조정
 room_img = room_img.resize((650, int(650 * (room_img.height / room_img.width))))
 st.image(room_img, width=650)
