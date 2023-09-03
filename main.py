@@ -29,7 +29,7 @@ st.image(room_img, width=650)
 
 with st.sidebar:
     openai_api_key = st.text_input("OpenAI API Key", type="password")
-    st.warning('이 MVP는 실제 상황을 제시하기 위해 웹 상으로 시뮬레이션을 구현한 것입니다. 실제 서비스는 하드웨어(시선 추적용 카메라, 음성인식용 마이크 및 스피커)가 포함되어 있으니 하드웨어가 포함된 MVP 소개 영상을 참고해주세요!')
+    st.warning('이 MVP는 실제 상황을 제시하기 위해 웹 상으로 시뮬레이션을 구현한 것입니다. 실제 서비스는 하드웨어(시선 추적용 카메라, 음성인식용 마이크 및 스피커)가 포함되어 있으니 하드웨어가 포함된 MVP 소개 영상을 참고해주세요!' , icon = '🙃')
 
 # 초기 세션 상태 설정
 if 'chat_history' not in st.session_state:
