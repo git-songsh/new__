@@ -12,9 +12,7 @@ from langchain.chains import RetrievalQA
 
 
 #st.balloons()
-tv_mg = st.chat_message("tv", avatar = 'U+1F4FA')
-u_mg = st.chat_message("user", avatar = 'U+1F914')
-u_mg.write("fdd")
+tv_mg = st.chat_message("tv", avatar = '📺')
 tv_mg.write("fff")
 
 
