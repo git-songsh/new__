@@ -14,8 +14,8 @@ from langchain.chains import RetrievalQA
 #st.balloons()
 tv_mg = st.chat_message("tv", avatar = 'U+1F4FA')
 u_mg = st.chat_message("user", avatar = 'U+1F914')
-u_mg.write("chat['question']")
-tv_mg.write(f"{chat[answer]}")
+u_mg.write("fdd")
+tv_mg.write("fff")
 
 
 #제목
